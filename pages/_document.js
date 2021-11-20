@@ -24,7 +24,7 @@ export default class MyDocument extends Document {
             crossOrigin="anonymous"
           />
         </Head>
-        <body className="bg-body text-white font-poppins pb-12">
+        <body className="bg-body text-white font-poppins pb-12 select-none">
           <Main></Main>
           <NextScript />
         </body>
