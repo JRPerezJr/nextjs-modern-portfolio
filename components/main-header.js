@@ -23,7 +23,7 @@ const MainHeader = () => {
               <a className="text-selected-text">Home</a>
             </Link>
             <Link href="#my-work">
-              <a>My work</a>
+              <a>My projects</a>
             </Link>
             <Link href="#clients">
               <a>Clients</a>

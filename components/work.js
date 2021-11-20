@@ -16,7 +16,7 @@ const WorkSection = () => {
     >
       <section className="w-full 3xl:mt-36">
         <h2 id="my-work" className="secondary-title">
-          My work
+          My projects
         </h2>
         <p className="section-paragraph">
           I’ve had the pleasure of working with multiple Fortune 500 companies,
