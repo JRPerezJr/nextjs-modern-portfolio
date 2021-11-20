@@ -2,8 +2,8 @@
 
 const Footer = () => {
   return (
-    <footer>
-      <div className="social-footer select-none transition4">
+    <footer className="mt-40 container flex justify-center items-center">
+      <div>
         {/* <ul>
           <li>
             <a
@@ -51,8 +51,8 @@ const Footer = () => {
             </a>
           </li>
         </ul> */}
-        <p className="copyright">Crafted on Next.js</p>
-        <p className="copyright">Copyright © 2021 Juan Perez Jr.</p>
+        <p className="font-bold">Crafted on Next.js</p>
+        <p className="font-bold">Copyright © 2021 Juan Perez Jr.</p>
       </div>
     </footer>
   );
