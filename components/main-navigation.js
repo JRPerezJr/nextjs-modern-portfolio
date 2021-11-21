@@ -1,7 +1,34 @@
+import { useState, useEffect } from 'react';
+
 import Link from 'next/link';
 
+const staticLinks = [
+  {
+    id: 1,
+    title: 'Home',
+    slug: '/#',
+  },
+  {
+    id: 2,
+    title: 'Projects',
+    slug: '#my-work',
+  },
+  {
+    id: 3,
+    title: 'Clients',
+    slug: '#clients',
+  },
+  {
+    id: 4,
+    title: 'Hire',
+    slug: '#hire-me',
+  },
+];
+
 const MainNavigation = () => {
-  const updateList = () => {
+  const [isSelected, setIsSelected] = useState(true);
+
+  const handleScroll = () => {
     const titles = [...document.querySelectorAll('h1, h2')].sort((a, b) => {
       return (
         Math.abs(a.getBoundingClientRect().top) -
@@ -9,6 +36,7 @@ const MainNavigation = () => {
       );
     });
 
+    setIsSelected(false);
     document
       .querySelectorAll('.selected-circle')
       .forEach((c) => c.classList.remove('selected-circle'));
@@ -19,8 +47,18 @@ const MainNavigation = () => {
         [...document.querySelectorAll('h1, h2')].indexOf(titles[0])
       ].classList.add('selected-circle');
   };
-  // updateList();
-  // console.log(window);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (isSelected) {
+        setIsSelected(true);
+      } else {
+        setIsSelected(false);
+      }
+    };
+  }, []);
 
   return (
     <div
@@ -49,7 +87,27 @@ const MainNavigation = () => {
           "
         >
           <div className="absolute left-50 transform -translate-x-1/2 space-y-6 mt-37">
-            <Link href="#">
+            {staticLinks.map((link) => {
+              return (
+                <Link key={link.id} href={link.slug}>
+                  <a
+                    className={`nav-dot
+                ${isSelected && link.id === 1 ? 'selected-circle' : ''}
+                block
+                w-7
+                h-7
+                rounded-full
+                border-4 border-nav
+                bg-body`}
+                  >
+                    <span className="bg-black px-2 py-1 rounded-md ml-10 opacity-0">
+                      {link.title}
+                    </span>
+                  </a>
+                </Link>
+              );
+            })}
+            {/* <Link href="#">
               <a
                 className="
                 nav-dot
@@ -120,7 +178,7 @@ const MainNavigation = () => {
                   Hire
                 </span>
               </a>
-            </Link>
+            </Link> */}
           </div>
         </nav>
 
