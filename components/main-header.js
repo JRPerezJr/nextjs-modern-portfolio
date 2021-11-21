@@ -17,6 +17,11 @@ const MainHeader = () => {
     window.addEventListener('scroll', handleNavBackgroundOnScroll);
     return () => {
       window.removeEventListener('scroll', handleNavBackgroundOnScroll);
+      if (navBar) {
+        setNavBar(true);
+      } else {
+        setNavBar(false);
+      }
     };
   }, []);
   return (
@@ -43,7 +48,7 @@ const MainHeader = () => {
         >
           <div className="text-lg">JPerezdevinjp.com</div>
           <div className="hidden md:flex space-x-12 items-center">
-            <Link href="#">
+            <Link href="/#">
               <a className="text-selected-text">Home</a>
             </Link>
             <Link href="#my-work">
