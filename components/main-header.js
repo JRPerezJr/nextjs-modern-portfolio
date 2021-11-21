@@ -1,9 +1,33 @@
+import { useEffect, useState } from 'react';
+
 import Link from 'next/link';
 
 const MainHeader = () => {
+  const [navBar, setNavBar] = useState(false);
+
+  const handleNavBackgroundOnScroll = () => {
+    if (window.scrollY >= 40) {
+      setNavBar(true);
+    } else {
+      setNavBar(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleNavBackgroundOnScroll);
+    return () => {
+      window.removeEventListener('scroll', handleNavBackgroundOnScroll);
+    };
+  }, []);
   return (
     <>
-      <header className="py-6">
+      <header
+        className={
+          navBar
+            ? 'top-0 z-50 sticky py-6 bg-black'
+            : 'top-0 z-50 sticky py-6 bg-transparent'
+        }
+      >
         <div
           className="
           container
